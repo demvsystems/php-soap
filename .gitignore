@@ -1,2 +1,4 @@
 vendor
 .idea
+local_tests
+/.phpunit.result.cache

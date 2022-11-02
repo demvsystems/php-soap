@@ -2,70 +2,55 @@
 
 namespace Dgame\Soap\Attribute;
 
+use Dgame\Soap\PrefixTrait;
 use Dgame\Soap\Visitor\AttributeVisitorInterface;
 
 /**
  * Class XmlAttribute
- * @package Dgame\Soap\Attribute
+ * @package Soap\Attribute
  */
-class XmlAttribute extends Attribute
+class XmlAttribute extends Attribute implements XmlAttributeInterface
 {
+    use PrefixTrait;
+
     /**
-     * @var string
+     * @var int
      */
-    private $prefix;
+    private $prefixUsage = 0;
 
     /**
      * XmlAttribute constructor.
      *
-     * @param string      $name
-     * @param string|null $value
-     * @param string|null $prefix
+     * @param string $name
+     * @param mixed $value
      */
-    public function __construct(string $name, string $value = null, string $prefix = null)
+    public function __construct(string $name, $value)
     {
         parent::__construct($name, $value);
-
-        $this->setPrefix($prefix ?? '');
     }
 
     /**
-     * @return string
+     * @return int
      */
-    final public function getPrefixedName(): string
+    public function getPrefixUsage(): int
     {
-        if ($this->hasPrefix()) {
-            return sprintf('%s:%s', $this->prefix, $this->getName());
-        }
-
-        return $this->getName();
-    }
-
-    /**
-     * @param string $prefix
-     */
-    final public function setPrefix(string $prefix): void
-    {
-        $prefix = trim($prefix);
-        if (strlen($prefix) !== 0) {
-            $this->prefix = $prefix;
-        }
+        return $this->prefixUsage;
     }
 
     /**
      * @return bool
      */
-    final public function hasPrefix(): bool
+    public function isPrefixUsed(): bool
     {
-        return $this->prefix !== null;
+        return $this->prefixUsage > 0;
     }
 
     /**
-     * @return string
+     *
      */
-    final public function getPrefix(): string
+    public function incrementPrefixUsage(): void
     {
-        return $this->prefix;
+        $this->prefixUsage += 1;
     }
 
     /**
