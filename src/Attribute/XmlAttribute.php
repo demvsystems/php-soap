@@ -16,7 +16,7 @@ class XmlAttribute extends Attribute implements XmlAttributeInterface
     /**
      * @var int
      */
-    private $prefixUsage = 0;
+    private int $prefixUsage = 0;
 
     /**
      * XmlAttribute constructor.
@@ -50,7 +50,7 @@ class XmlAttribute extends Attribute implements XmlAttributeInterface
      */
     public function incrementPrefixUsage(): void
     {
-        $this->prefixUsage += 1;
+        ++$this->prefixUsage;
     }
 
     /**

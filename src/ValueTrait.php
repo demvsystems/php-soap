@@ -11,7 +11,7 @@ trait ValueTrait
     /**
      * @var mixed
      */
-    private $value;
+    private mixed $value;
 
     /**
      * @return bool
@@ -24,7 +24,7 @@ trait ValueTrait
     /**
      * @return mixed
      */
-    final public function getValue()
+    final public function getValue(): mixed
     {
         return $this->value;
     }

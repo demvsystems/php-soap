@@ -19,6 +19,8 @@ use stdClass;
  */
 final class HydrationTest extends TestCase
 {
+    private array $names;
+
     public function testSingleHydration(): void
     {
         $doc = new DOMDocument('1.0', 'utf-8');
@@ -28,8 +30,8 @@ final class HydrationTest extends TestCase
         $strategy->setCallback('Envelope.Body.Fault.faultstring', function (ElementInterface $element) {
             return (object) ['fault' => $element->getValue()];
         });
-        $hydator = new Hydrator($strategy);
-        $hydator->hydrate($doc);
+        $hydrator = new Hydrator($strategy);
+        $hydrator->hydrate($doc);
 
         $this->assertNotNull($strategy->getHydrated());
         $this->assertTrue(is_object($strategy->getHydrated()));
@@ -60,7 +62,7 @@ final class HydrationTest extends TestCase
         $hydator->hydrate($doc);
 
         $this->assertNotNull($strategy->getHydrated());
-        $this->assertTrue(is_object($strategy->getHydrated()));
+        $this->assertIsObject($strategy->getHydrated());
         $this->assertNotEmpty($strategy->getHydrated()->fault);
         $this->assertEquals('Fehler!', $strategy->getHydrated()->fault->faultcode);
         $this->assertEquals('Es ist ein Fehler aufgetreten', $strategy->getHydrated()->fault->faultstring);

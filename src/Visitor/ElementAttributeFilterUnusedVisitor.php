@@ -16,9 +16,9 @@ use Dgame\Soap\Element\XmlNodeInterface;
 final class ElementAttributeFilterUnusedVisitor implements ElementVisitorInterface, AttributeVisitorInterface
 {
     /**
-     * @var ElementInterface
+     * @var ElementInterface | null
      */
-    private $element;
+    private ?ElementInterface $element;
 
     /**
      * @param ElementInterface $element

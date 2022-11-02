@@ -9,13 +9,13 @@ namespace Dgame\Soap\Components;
 class Fault
 {
     /**
-     * @var string
+     * @var string | null
      */
-    private $message;
+    private ?string $message;
     /**
-     * @var string
+     * @var string | null
      */
-    private $code;
+    private ?string $code;
 
     /**
      * Fault constructor.

@@ -16,7 +16,7 @@ final class XmlToJsonConverter implements ElementVisitorInterface
     /**
      * @var array
      */
-    private $output = [];
+    private array $output = [];
 
     /**
      *
@@ -49,7 +49,7 @@ final class XmlToJsonConverter implements ElementVisitorInterface
      *
      * @return mixed
      */
-    private static function convertValue($value)
+    private static function convertValue($value): mixed
     {
 //        if (is_numeric($value)) {
 //            if (strpos($value, '.') !== false) {
@@ -72,7 +72,7 @@ final class XmlToJsonConverter implements ElementVisitorInterface
      *
      * @return mixed
      */
-    private static function filter($value, int $filter)
+    private static function filter($value, int $filter): mixed
     {
         $result = filter_var($value, $filter);
 

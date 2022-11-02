@@ -25,23 +25,23 @@ final class BindingImporter implements ElementVisitorInterface
     /**
      * @var Closure[]
      */
-    private $closures = [];
+    private array $closures = [];
     /**
      * @var bool
      */
-    private $caseSensitivev = true;
+    private bool $caseSensitivev = true;
     /**
      * @var array
      */
-    private $errors = [];
+    private array $errors = [];
     /**
      * @var SplStack
      */
-    private $footprints;
+    private SplStack $footprints;
     /**
      * @var bool
      */
-    public $debug = false;
+    public bool $debug = false;
 
     /**
      * BindingImporter constructor.
@@ -114,11 +114,11 @@ final class BindingImporter implements ElementVisitorInterface
     }
 
     /**
-     * @param bool $caseSensitivev
+     * @param bool $caseSensitive
      */
-    public function setCaseSensitive(bool $caseSensitivev): void
+    public function setCaseSensitive(bool $caseSensitive): void
     {
-        $this->caseSensitivev = $caseSensitivev;
+        $this->caseSensitivev = $caseSensitive;
     }
 
     /**
@@ -141,7 +141,7 @@ final class BindingImporter implements ElementVisitorInterface
     {
         $location = preg_quote($location, '/');
         foreach (self::REPLACEMENTS as $key => $value) {
-            $location = str_replace(preg_quote($key), $value, $location);
+            $location = str_replace(preg_quote($key,null), $value, $location);
         }
 
         $delegate = new ImportBindingDelegate($closure);

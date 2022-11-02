@@ -26,15 +26,15 @@ final class PackageToBuiltinTranslator implements ElementVisitorInterface, Attri
     /**
      * @var DOMDocument
      */
-    private $document;
+    private DOMDocument $document;
     /**
-     * @var DOMElement
+     * @var DOMElement | DOMDocument | DOMNode
      */
-    private $node;
+    private DOMElement|DOMDocument|DOMNode $node;
     /**
      * @var ElementVisitorInterface[]
      */
-    private $preprocessors = [];
+    private array $preprocessors = [];
 
     /**
      * @param ElementVisitorInterface $visitor
@@ -84,6 +84,8 @@ final class PackageToBuiltinTranslator implements ElementVisitorInterface, Attri
 
     /**
      * @param ElementInterface $element
+     *
+     * @throws \DOMException
      */
     public function visitElement(ElementInterface $element): void
     {
@@ -93,6 +95,8 @@ final class PackageToBuiltinTranslator implements ElementVisitorInterface, Attri
 
     /**
      * @param XmlElementInterface $element
+     *
+     * @throws \DOMException
      */
     public function visitXmlElement(XmlElementInterface $element): void
     {
@@ -102,6 +106,8 @@ final class PackageToBuiltinTranslator implements ElementVisitorInterface, Attri
 
     /**
      * @param XmlNodeInterface $node
+     *
+     * @throws \DOMException
      */
     public function visitXmlNode(XmlNodeInterface $node): void
     {
@@ -160,6 +166,7 @@ final class PackageToBuiltinTranslator implements ElementVisitorInterface, Attri
      * @param XmlElementInterface $element
      *
      * @return DOMNode
+     * @throws \DOMException
      */
     private function createDomNode(XmlElementInterface $element): DOMNode
     {
@@ -185,9 +192,9 @@ final class PackageToBuiltinTranslator implements ElementVisitorInterface, Attri
     /**
      * @param ValuedInterface $valued
      *
-     * @return mixed
+     * @return string|null
      */
-    private function getValueExport(ValuedInterface $valued)
+    private function getValueExport(ValuedInterface $valued): ?string
     {
         if (!$valued->hasValue()) {
             return null;

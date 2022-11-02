@@ -17,10 +17,10 @@ class Attribute implements AttributeInterface
     /**
      * Attribute constructor.
      *
-     * @param string $name
-     * @param mixed  $value
+     * @param string     $name
+     * @param mixed|null $value
      */
-    public function __construct(string $name, $value = null)
+    public function __construct(string $name, mixed $value = null)
     {
         $this->name = trim($name);
         $this->setValue($value);

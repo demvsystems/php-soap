@@ -19,7 +19,7 @@ class Element implements ElementInterface
     /**
      * @var AttributeInterface[]
      */
-    private $attributes = [];
+    private array $attributes = [];
 
     /**
      * Element constructor.
@@ -69,6 +69,7 @@ class Element implements ElementInterface
      * @param int $index
      *
      * @return AttributeInterface
+     * @throws \Throwable
      */
     final public function getAttributeByIndex(int $index): AttributeInterface
     {

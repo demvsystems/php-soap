@@ -13,9 +13,9 @@ use Dgame\Soap\Element\XmlNodeInterface;
 final class ElementPrefixInheritance implements ElementVisitorInterface
 {
     /**
-     * @var string
+     * @var null|string
      */
-    private $prefix;
+    private ?string $prefix = null;
 
     /**
      * @param ElementInterface $element

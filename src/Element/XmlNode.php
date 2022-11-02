@@ -14,7 +14,7 @@ class XmlNode extends XmlElement implements XmlNodeInterface
     /**
      * @var ElementInterface[]
      */
-    private $elements = [];
+    private array $elements = [];
 
     /**
      * @return bool
@@ -78,6 +78,7 @@ class XmlNode extends XmlElement implements XmlNodeInterface
      * @param int $index
      *
      * @return ElementInterface
+     * @throws \Throwable
      */
     final public function getElementByIndex(int $index): ElementInterface
     {
