@@ -14,9 +14,9 @@ use Dgame\Soap\Element\XmlElementInterface;
 final class AttributePrefixVisitor implements AttributeVisitorInterface
 {
     /**
-     * @var XmlElementInterface
+     * @var XmlElementInterface | null
      */
-    private $element;
+    private ?XmlElementInterface $element;
 
     /**
      * AttributePrefixVisitor constructor.

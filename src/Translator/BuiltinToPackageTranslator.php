@@ -23,7 +23,7 @@ final class BuiltinToPackageTranslator
     /**
      * @var array
      */
-    private $attributes = [];
+    private array $attributes = [];
 
     /**
      * @param DOMNode $node
@@ -61,7 +61,7 @@ final class BuiltinToPackageTranslator
             return null;
         }
 
-        if ($this->isElement($node)) {
+        if (self::isElement($node)) {
             return $this->createElement($node);
         }
 
@@ -152,7 +152,7 @@ final class BuiltinToPackageTranslator
     {
         $prefix = $node->prefix;
         $name   = $node->localName;
-        if (empty($prefix) && strpos($name, ':') !== false) {
+        if (empty($prefix) && str_contains($name, ':')) {
             $values = explode(':', $name);
 
             return array_combine(['prefix', 'name'], array_slice($values, 0, 2));

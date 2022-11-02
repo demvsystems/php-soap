@@ -26,7 +26,7 @@ class XmlElement extends Element implements XmlElementInterface
         if (strpos($name, ':')) {
             assert(empty($prefix));
 
-            list($prefix, $name) = explode(':', $name);
+            [$prefix, $name] = explode(':', $name);
         }
 
         parent::__construct($name, $value);

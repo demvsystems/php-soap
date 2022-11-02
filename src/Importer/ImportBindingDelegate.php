@@ -13,11 +13,11 @@ final class ImportBindingDelegate implements BindingInterface
     /**
      * @var bool
      */
-    private $bound = false;
+    private bool $bound = false;
     /**
      * @var Closure
      */
-    private $closure;
+    private Closure $closure;
 
     /**
      * ImportBinding constructor.

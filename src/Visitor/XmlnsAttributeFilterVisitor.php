@@ -16,11 +16,11 @@ final class XmlnsAttributeFilterVisitor implements AttributeVisitorInterface
     /**
      * @var XmlnsAttribute[]
      */
-    private $attributes = [];
+    private array $attributes = [];
     /**
      * @var bool
      */
-    private $hasPrefix = false;
+    private bool $hasPrefix;
 
     /**
      * XmlnsAttributeFilterVisitor constructor.

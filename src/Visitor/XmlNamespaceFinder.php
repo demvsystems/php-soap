@@ -14,13 +14,13 @@ use Dgame\Soap\Element\XmlElementInterface;
 final class XmlNamespaceFinder implements AttributeVisitorInterface
 {
     /**
-     * @var string
+     * @var null|string
      */
-    private $prefix;
+    private ?string $prefix = null;
     /**
-     * @var XmlnsAttribute
+     * @var null|XmlnsAttribute
      */
-    private $attribute;
+    private ?XmlnsAttribute $attribute = null;
 
     /**
      * XmlNamespaceFinder constructor.

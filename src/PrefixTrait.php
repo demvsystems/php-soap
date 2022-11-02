@@ -9,9 +9,9 @@ namespace Dgame\Soap;
 trait PrefixTrait
 {
     /**
-     * @var string
+     * @var null|string
      */
-    private $prefix;
+    private ?string $prefix;
 
     /**
      * @return bool

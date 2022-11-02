@@ -24,15 +24,15 @@ final class BindingHydratorStrategy implements HydratorStrategyInterface
     /**
      * @var Closure[]
      */
-    private $closures = [];
+    private array $closures = [];
     /**
      * @var bool
      */
-    private $caseSensitivev = true;
+    private bool $caseSensitivev = true;
     /**
      * @var array
      */
-    private $errors = [];
+    private array $errors = [];
 
     /**
      * @return bool
@@ -82,13 +82,13 @@ final class BindingHydratorStrategy implements HydratorStrategyInterface
      * @param callable|null $factory
      *
      * @return stdClass
-     * @throws \ReflectionException
+     * @throws \ReflectionException|Throwable
      */
     public function bind(string $location, Closure $closure, callable $factory = null)
     {
         $location = preg_quote($location, '/');
         foreach (self::REPLACEMENTS as $key => $value) {
-            $location = str_replace(preg_quote($key), $value, $location);
+            $location = str_replace(preg_quote($key, null), $value, $location);
         }
 
         $object = $factory !== null ? $factory() : new stdClass();

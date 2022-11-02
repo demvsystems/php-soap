@@ -16,19 +16,19 @@ final class DefaultHydratorStrategy implements HydratorStrategyInterface
     /**
      * @var SplStack
      */
-    private $elements;
+    private SplStack $elements;
     /**
      * @var object
      */
-    private $top;
+    private object $top;
     /**
      * @var callable[]
      */
-    private $callbacks = [];
+    private array $callbacks = [];
     /**
      * @var callable[]
      */
-    private $pattern = [];
+    private array $pattern = [];
 
     /**
      * DefaultHydratorStrategy constructor.
@@ -51,6 +51,7 @@ final class DefaultHydratorStrategy implements HydratorStrategyInterface
      * @param callable $callback
      *
      * @return DefaultHydratorStrategy
+     * @throws \Throwable
      */
     public function setCallback(string $footprints, callable $callback): self
     {
@@ -76,7 +77,7 @@ final class DefaultHydratorStrategy implements HydratorStrategyInterface
     /**
      * @return object|null
      */
-    private function peek()
+    private function peek(): ?object
     {
         return $this->elements->isEmpty() ? null : $this->elements->top();
     }
@@ -84,7 +85,7 @@ final class DefaultHydratorStrategy implements HydratorStrategyInterface
     /**
      * @return object|null
      */
-    public function getHydrated()
+    public function getHydrated(): ?object
     {
         return $this->top ?? $this->peek();
     }

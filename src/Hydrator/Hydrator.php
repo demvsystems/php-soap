@@ -23,15 +23,17 @@ final class Hydrator implements ElementVisitorInterface, AttributeVisitorInterfa
     /**
      * @var HydratorStrategyInterface
      */
-    private $strategy;
+    private HydratorStrategyInterface $strategy;
+
     /**
      * @var SplStack
      */
-    private $footprints;
+    private SplStack $footprints;
+
     /**
      * @var bool
      */
-    public $debug = false;
+    public bool $debug = false;
 
     /**
      * Hydrator constructor.
