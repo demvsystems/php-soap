@@ -173,7 +173,8 @@ final class PackageToBuiltinTranslator implements ElementVisitorInterface, Attri
         $name   = self::getPrefixedName($element);
         $finder = new XmlNamespaceFinder($element);
         if ($finder->hasNamespace()) {
-            return $this->document->createElementNS($finder->getNamespace()->getValue(), $name, $this->getValueExport($element));
+            $value = $this->getValueExport($element) ?? '';
+            return $this->document->createElementNS($finder->getNamespace()->getValue(), $name, $value);
         }
 
         return $this->document->createElement($name, $this->getValueExport($element));
