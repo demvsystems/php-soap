@@ -177,7 +177,7 @@ final class PackageToBuiltinTranslator implements ElementVisitorInterface, Attri
             return $this->document->createElementNS($finder->getNamespace()->getValue(), $name, $value);
         }
 
-        return $this->document->createElement($name, $this->getValueExport($element));
+        return $this->document->createElement($name, $this->getValueExport($element) ?? '');
     }
 
     /**
